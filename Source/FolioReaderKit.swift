@@ -167,6 +167,14 @@ extension FolioReader {
         parentViewController.present(readerContainer, animated: animated, completion: nil)
         addObservers()
     }
+    
+    open func returnReader(withEpubPath epubPath: String, unzipPath: String? = nil, andConfig config: FolioReaderConfig, shouldRemoveEpub: Bool = true, animated:
+        Bool = true) -> FolioReaderContainer {
+        let readerContainer = FolioReaderContainer(withConfig: config, folioReader: self, epubPath: epubPath, unzipPath: unzipPath, removeEpub: shouldRemoveEpub)
+        self.readerContainer = readerContainer
+        addObservers()
+        return self.readerContainer!
+    }
 }
 
 // MARK: -  Getters and setters for stored values
