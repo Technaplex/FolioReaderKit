@@ -68,11 +68,11 @@ class CodeExampleViewController: UIViewController {
             let bookPath = epub.bookPath else {
                 return
         }
-
+        
         do {
-            if let image = try FolioReader.getCoverImage(bookPath) {
-                button?.setBackgroundImage(image, for: .normal)
-            }
+            let image = try FolioReader.getCoverImage(bookPath)
+
+            button?.setBackgroundImage(image, for: .normal)
         } catch {
             print(error.localizedDescription)
         }
